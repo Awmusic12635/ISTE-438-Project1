@@ -7,8 +7,59 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+require('dotenv').config()
 
 var app = express();
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://'+process.env.DB_HOST+'/'+process.env.DB_NAME);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    console.log("Connected to DB: "+ process.env.DB_NAME);
+});
+
+//DB MODELS
+var tweetSchema = mongoose.Schema({
+    'Tweet Id': String,
+    'Date':Date,
+    'Hour': String,
+    'User Name':String,
+    'Nickname':String,
+    'Bio':String,
+    'Tweet Content':String,
+    'Favs':String,
+    'RTs':String,
+    'Latitude':String,
+    'Longitude':String,
+    'Country':String,
+    'Place (as appears on Bio)':String,
+    'Profile picture':String,
+    'Followers':Number,
+    'Following':Number,
+    'Listed':Number,
+    'Tweet language (ISO 639-1)':String,
+    'Tweet Url':String,
+    'Is a RT':Boolean,
+    'Original Tweet User Name':String,
+    'User Mentions':String,
+    'Hashtags':String,
+    'Symbols':String,
+    'Media':String,
+    'URLs':String
+});
+
+var Tweet = mongoose.model('Tweet', tweetSchema,process.env.DB_COLLECTION);
+
+//example query
+Tweet.find({_id:"5898a6776595d757dddf7040"}, function (err, docs) {
+    // docs.forEach
+    docs.forEach(function(doc){
+        // must grab object variables with ['key name'] because he is a jerk and put in spaces and captial letters.
+       console.log(doc['User Name']);
+    });
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
