@@ -13,7 +13,7 @@ First you will need to clone the git repo on your computer
 git clone https://github.com/Awmusic12635/GeoChap.git
 ```
 
-From there you need to take the .env.example file and rename it to .env . Fill in the 3 fields with the database host, db name and collection name.
+From there you need to take the .env.example file and rename it to .env . Fill in the 3 fields with the database host, db name and collection name.(some recommendations are included)
 
 The project also requires node.js in order to run, please make sure that is installed.
 
