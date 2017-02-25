@@ -10,7 +10,7 @@ This project is for class ISTE 438 and is designed to be a basic search engine t
 First you will need to clone the git repo on your computer
 
 ```bash
-git clone https://github.com/Awmusic12635/GeoChap.git
+git clone https://github.com/Awmusic12635/ISTE-438-Project1.git
 ```
 
 From there you need to take the .env.example file and rename it to .env . Fill in the 3 fields with the database host, db name and collection name.(some recommendations are included)
