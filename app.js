@@ -60,6 +60,19 @@ var Tweet = mongoose.model('Tweet', tweetSchema,process.env.DB_COLLECTION);
     });
 });*/
 
+// connection to the database
+var dbconn = mongoose.model('Tweet', tweetSchema,process.env.DB_COLLECTION);
+
+// callback gets passed an array of documents
+function queryDb(dbconn, value, callback){
+	dbconn.find(value, function (err, docs) {
+		var listOfDocs = [];
+		docs.forEach(function(doc){
+		   listOfDocs.push(doc);
+		});
+	   callback(listOfDocs);
+	});
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
