@@ -3,11 +3,17 @@ extends layout
 block content
   script.
       $(document).ready(function () {
-          $('#searchTable').DataTable({
+          var table = $('#searchTable').DataTable({
               "serverSide": true,
               "processing": true,
               'ajax':{
                   url: '/search'
+              }
+          });
+          $('#searchInput').keypress(function (e) {
+              if (e.which == 13) {
+                  console.log('test');
+                  table.search( this.value ).draw();
               }
           });
       });
@@ -19,7 +25,7 @@ block content
           | Search Tweets
         div(class="input-group")
           span(class="input-group-addon",id="basic-addon1") Search
-          input(type="text", class="form-control", placeholder="Tweet Content", aria-describedby="basic-addon1")
+          input(id='searchInput', type="text", class="form-control", placeholder="Tweet Content", aria-describedby="basic-addon1")
 
         table(id="searchTable", class="display")
           thead
