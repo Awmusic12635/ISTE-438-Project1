@@ -1,0 +1,17 @@
+
+extends layout
+
+block content
+    div(class="container")
+        h1 Bootstrap starter template
+        - var Tweetdata = data
+        each item in Tweetdata
+            span #{'item.Tweet ID'} : #{'item.User Name'}
+
+
+        p(class="lead")
+            | Use this document as a way to quickly start any new project.
+            br
+            | All you get is this text and a mostly barebones HTML document.
+
+
