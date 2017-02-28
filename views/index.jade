@@ -6,15 +6,14 @@ block content
           var table = $('#searchTable').DataTable({
               "serverSide": true,
               "processing": true,
-              "searching":false,
+              "searching":true,
               'ajax':{
                   url: '/search'
               }
           });
           $('#searchInput').keypress(function (e) {
               if (e.which == 13) {
-                  console.log('test');
-                  table.search( this.value ).draw();
+                  table.search( $(this).val() ).draw();
               }
           });
       });
