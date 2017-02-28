@@ -1,12 +1,31 @@
 extends layout
 
 block content
+  script.
+      $(document).ready(function () {
+          $('#searchTable').DataTable({
+              "serverSide": true,
+              "processing": true,
+              'ajax':{
+                  url: '/search'
+              }
+          });
+      });
   div(class="container")
     div(class="starter-template")
-      h1 Bootstrap starter template
-      p(class="lead")
-        | Use this document as a way to quickly start any new project.
-        br
-        | All you get is this text and a mostly barebones HTML document.
+      h1 Tweet Search Engine
+      div
+        p(class="lead")
+          | Search Tweets
+        div(class="input-group")
+          span(class="input-group-addon",id="basic-addon1") Search
+          input(type="text", class="form-control", placeholder="Tweet Content", aria-describedby="basic-addon1")
 
+        table(id="searchTable", class="display")
+          thead
+            tr
+              th ID
+              th Author
+              th Date
+          tbody
 
