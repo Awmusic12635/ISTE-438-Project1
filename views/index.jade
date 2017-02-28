@@ -6,6 +6,7 @@ block content
           var table = $('#searchTable').DataTable({
               "serverSide": true,
               "processing": true,
+              "searching":false,
               'ajax':{
                   url: '/search'
               }
