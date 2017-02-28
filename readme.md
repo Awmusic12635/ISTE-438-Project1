@@ -6,6 +6,7 @@ This project is for class ISTE 438 and is designed to be a basic search engine t
 
 ## Installation
 
+<b>DO NOT INSTALL IN A SHARED FOLDER</b>
 
 First you will need to clone the git repo on your computer
 
