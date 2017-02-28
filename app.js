@@ -45,9 +45,20 @@ var tweetSchema = mongoose.Schema({
     'Hashtags':String,
     'Symbols':String,
     'Media':String,
-    'URLs':String.
-	'comment':[String]
+    'URLs':String,
+    'Comments':[String]
 });
+
+var Tweet = mongoose.model('Tweet', tweetSchema,process.env.DB_COLLECTION);
+
+//test query
+/*Tweet.find({_id:"5898a6776595d757dddf7040"}, function (err, docs) {
+    // docs.forEach
+    docs.forEach(function(doc){
+        // must grab object variables with ['key name'] because he is a jerk and put in spaces and captial letters.
+       console.log(doc['User Name']);
+    });
+});*/
 
 // connection to the database
 var dbconn = mongoose.model('Tweet', tweetSchema,process.env.DB_COLLECTION);
@@ -97,7 +108,7 @@ app.use(function(err, req, res, next) {
 
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!')
-})
+});
 
 
 module.exports = app;
