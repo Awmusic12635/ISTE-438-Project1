@@ -1,11 +1,26 @@
-
 extends layout
 
 block content
+	script.
+		var tweetId = tweet['Tweet Id'];
+		$(document).ready(function () {
+		
+			$('#submitComment').click(function(){
+				window.location="/comment\/"+tweetId;
+			});
+		});
+	  
     div(class="container")
-        h1 Detailed Tweet
+        h1 Gift Feedback on Tweet
 
-        p(class="lead")
+		h2 Comment
+			form(id='commentForm' method='post' action="/comment\/"+#{tweet['Tweet Id']})
+				textarea(id='comment')
+				input(id='submitComment' type="submit")
+		  
+		h2 Tweet
+        
+		p(class="lead")
             ul
                 li Tweet ID: #{tweet['Tweet Id']}
                 li Date: #{tweet['Date']}
@@ -34,7 +49,6 @@ block content
                 li Symbols: #{tweet['Symbols']}
                 li Media: #{tweet['Media']}
                 li Urls: #{tweet['Urls']}
-				li Comments: #{tweet['comment']}
-
-
+				li Comments: #{tweet['comments']}
+		
 
