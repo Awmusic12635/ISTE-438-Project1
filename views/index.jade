@@ -9,12 +9,21 @@ block content
               "searching":true,
               'ajax':{
                   url: '/search'
-              }
+              },
+              "columns":[
+                  {'data':"_id"},
+                  {'data':"User Name"},
+                  {'data':"Date"}
+              ]
           });
           $('#searchInput').keypress(function (e) {
               if (e.which == 13) {
                   table.search( $(this).val() ).draw();
               }
+          });
+          $('tbody').on('click','tr',function(){
+              console.log('hi');
+              window.location="/tweets/"+$(this).children().first().text();
           });
       });
   div(class="container")

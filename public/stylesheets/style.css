@@ -12,3 +12,6 @@ a {
 .input-group{
   margin:15px;
 }
+tr{
+  cursor: pointer;
+}

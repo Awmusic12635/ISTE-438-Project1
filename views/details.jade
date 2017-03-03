@@ -3,15 +3,37 @@ extends layout
 
 block content
     div(class="container")
-        h1 Bootstrap starter template
-        - var Tweetdata = data
-        each item in Tweetdata
-            span #{'item.Tweet ID'} : #{'item.User Name'}
-
+        h1 Detailed Tweet
 
         p(class="lead")
-            | Use this document as a way to quickly start any new project.
-            br
-            | All you get is this text and a mostly barebones HTML document.
+            ul
+                li Tweet ID: #{tweet['Tweet Id']}
+                li Date: #{tweet['Date']}
+                li Hour: #{tweet['Hour']}
+                li User Name: #{tweet['User Name']}
+                li Nick Name: #{tweet['Nickname']}
+                li Bio: #{tweet['Bio']}
+                li Tweet Content: #{tweet['Tweet content']}
+                li Favs: #{tweet['Favs']}
+                li RTs: #{tweet['RTs']}
+                li Latitude: #{tweet['Latitude']}
+                li Longitude: #{tweet['Longitude']}
+                li Country: #{tweet['Country']}
+                li Place (as appears on Bio): #{tweet['Place (as appears on Bio)']}
+                li Profile Picture:
+                    img(src="#{tweet['Profile picture']}")
+                li Followers: #{tweet['Followers']}
+                li Following: #{tweet['Following']}
+                li Listed: #{tweet['Listed']}
+                li Tweet Language: #{tweet['Tweet language (ISO 639-1)']}
+                li Tweet Url: #{tweet['Tweet Url']}
+                li Is a RT: #{tweet['Is a RT']}
+                li Original Tweet User Name: #{tweet['Original Tweet User Name']}
+                li User Mentions: #{tweet['User Mentions']}
+                li Hashtags: #{tweet['Hashtags']}
+                li Symbols: #{tweet['Symbols']}
+                li Media: #{tweet['Media']}
+                li Urls: #{tweet['Urls']}
+
 
 
