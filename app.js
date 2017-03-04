@@ -100,7 +100,7 @@ app.use(function(err, req, res, next) {
 
 // start the server listener
 app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
+    console.log('App listening on port 3000!')
 });
 
 
