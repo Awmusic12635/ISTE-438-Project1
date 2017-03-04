@@ -3,24 +3,28 @@ extends layout
 block content
   script.
       $(document).ready(function () {
-          var table = $('#searchTable').DataTable({
+          // forces the tweet table to be rendered serverside using the search route
+		  var table = $('#searchTable').DataTable({
               "serverSide": true,
               "processing": true,
               "searching":true,
               'ajax':{
                   url: '/search'
               },
+			  // columns shown in table
               "columns":[
                   {'data':"_id"},
                   {'data':"User Name"},
                   {'data':"Date"}
               ]
           });
+		  // search on enter
           $('#searchInput').keypress(function (e) {
               if (e.which == 13) {
                   table.search( $(this).val() ).draw();
               }
           });
+		  // attaches listener to clicks any table row and redirects to the detailed tweet page
           $('tbody').on('click','tr',function(){
               console.log('hi');
               window.location="/tweets/"+$(this).children().first().text();

@@ -5,6 +5,7 @@ block content
     div(class="container")
         h1 Detailed Tweet
 
+        // redirects to the comment route
         script.
             $(document).ready(function () {
                 $('#addCommentButton').on('click', function () {
@@ -29,7 +30,8 @@ block content
                 li Longitude: #{tweet['Longitude']}
                 li Country: #{tweet['Country']}
                 li Place (as appears on Bio): #{tweet['Place (as appears on Bio)']}
-                li Profile Picture:
+                // because we can
+				li Profile Picture:
                     img(src="#{tweet['Profile picture']}")
                 li Followers: #{tweet['Followers']}
                 li Following: #{tweet['Following']}
