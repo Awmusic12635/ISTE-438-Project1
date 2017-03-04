@@ -25,10 +25,6 @@ router.post('/:tweetid/comment', function(req, res, next){
         doc.save();
         next()
     });
-
-    /*Tweet.update({_id:req.params.tweetid},{$addToSet: {comments: req.body.comment}}, function (req, err) {
-        next();
-    });*/
 },function(req,res){
     return res.redirect('/tweets/'+req.params.tweetid);
 });
