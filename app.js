@@ -1,3 +1,4 @@
+// libraries
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,20 +6,27 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// uses the .env file to create variables under the process.env object
 require('dotenv').config();
 
+// more libraries
 var app = express();
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate');
 
+// connection string for mongoose to connect ot our database
 mongoose.connect('mongodb://'+process.env.DB_HOST+'/'+process.env.DB_NAME);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
+
+// logs connection to the database
 db.once('open', function() {
     console.log("Connected to DB: "+ process.env.DB_NAME);
 });
 
-//DB MODELS
+
+// DB MODELS
+// the schema value mongoose will use to interact with the database
 var tweetSchema = mongoose.Schema({
     'Tweet Id': String,
     'Date':Date,
@@ -51,6 +59,7 @@ var tweetSchema = mongoose.Schema({
 tweetSchema.plugin(mongoosePaginate);
 var Tweet = mongoose.model('Tweet', tweetSchema,process.env.DB_COLLECTION);
 
+// set up for routing
 var index = require('./routes/index');
 var search = require('./routes/search');
 var tweet = require('./routes/tweet');
@@ -59,14 +68,14 @@ var tweet = require('./routes/tweet');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// attach functions to record and interact with application functions
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// use the routes set up above and assign them to different uris
 app.use('/', index);
 app.use('/search', search);
 app.use('/tweets', tweet);
@@ -89,6 +98,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// start the server listener
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!')
 });
