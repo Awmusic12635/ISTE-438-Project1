@@ -15,3 +15,7 @@ a {
 tr{
   cursor: pointer;
 }
+#addCommentButton{
+  float:right;
+  margin:15px;
+}

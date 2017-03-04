@@ -54,7 +54,6 @@ var Tweet = mongoose.model('Tweet', tweetSchema,process.env.DB_COLLECTION);
 var index = require('./routes/index');
 var search = require('./routes/search');
 var tweet = require('./routes/tweet');
-var comment = require('./routes/comment');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -71,7 +70,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/search', search);
 app.use('/tweets', tweet);
-app.use('/comment', comment);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

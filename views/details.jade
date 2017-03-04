@@ -5,6 +5,15 @@ block content
     div(class="container")
         h1 Detailed Tweet
 
+        script.
+            $(document).ready(function () {
+                $('#addCommentButton').on('click', function () {
+                    console.log('clicked');
+                    window.location = "/tweets/#{tweet._id}/comment";
+                });
+            });
+        div
+            button(id='addCommentButton',type="button",class="btn btn-primary btn-lg") Add Comment
         p(class="lead")
             ul
                 li Tweet ID: #{tweet['Tweet Id']}
@@ -34,7 +43,7 @@ block content
                 li Symbols: #{tweet['Symbols']}
                 li Media: #{tweet['Media']}
                 li Urls: #{tweet['Urls']}
-				li Comments: #{tweet['comment']}
+                li Comments: #{tweet['Comments']}
 
 
 
