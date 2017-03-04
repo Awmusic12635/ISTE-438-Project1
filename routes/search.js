@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     console.log(req.query.search['value']);
     
 	// allows pagination based on record counts
-	Tweet.paginate({"Tweet content":{ "$regex": ''+req.query.search['value']} },{ lean: true, offset: parseInt(req.query.start),
+	Tweet.paginate({"text":{ "$regex": ''+req.query.search['value']} },{ lean: true, offset: parseInt(req.query.start),
         limit: parseInt(req.query.length) }).then(function(result) {
         var data = {'data':result.docs,'recordsTotal':result.total,'recordsFiltered':result.total,'draw': parseInt(req.query.draw)};
         res.json(data);

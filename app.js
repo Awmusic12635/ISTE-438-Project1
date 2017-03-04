@@ -34,7 +34,7 @@ var tweetSchema = mongoose.Schema({
     'User Name':String,
     'Nickname':String,
     'Bio':String,
-    'Tweet content':String,
+    'text':String,
     'Favs':String,
     'RTs':String,
     'Latitude':String,
