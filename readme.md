@@ -1,6 +1,6 @@
-#ISTE 438 Project 1 - Search Engine
+# ISTE 438 Project 1 - Search Engine
 
-##About
+## About
 This project is for class ISTE 438 and is designed to be a basic search engine that searches a MongoDB dataset.
 
 
